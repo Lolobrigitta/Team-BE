@@ -6,18 +6,19 @@ const bodyParser = require('body-parser');
 const products = require('./Edouard/products');
 const cars = require("./Mathias/cars");
 const motos = require("./Logann/Moto");
+const cats = require('./Reinhard/cats');
 
 
 // Endpoint to get all cats Reinhard
-app.get('/AllCars', (req, res) => {
-    res.json(cars);
+app.get('/AllCats',(req, res) => {
+    res.json(cats);
 });
 
 // Endpoint to get cat by ID Reinhard
-app.get('/OneCar/:id', (req, res) => {
+app.get('/OneCat/:id', (req, res) => {
     const car = cars.find(c => c.id === parseInt(req.params.id));
-    if (!car) return res.status(404).json({ message: "Car not found" });
-    res.json(car);
+    if (!cat) return res.status(404).json({ message: "Cat not found" });
+    res.json(cat);
 });
 
 //haal alle motormerken op Logan
@@ -92,17 +93,6 @@ app.get('/Onemeubels/:id', (req, res) => {
     const meubel = meubels.find(p => p.id === parseInt(req.params.id));
     if (!meubels) return res.status(404).json({ message: "meubel not found" });
     res.json(meubel);
-});
-
-// Custom 404 page
-app.use((req, res) => {
-    res.render("errors/404");
-});
-
-// Custom 500 page
-app.use((err, req, res, next) => {
-    console.error(err.message);
-    res.render("errors/500");
 });
 
 app.listen(port, () => console.log(
