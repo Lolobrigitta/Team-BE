@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const data = require('./Edouard/products');
-const motos = require('./Logann/Moto');
+
 
 app.set("view engine", "handlebars");
 
@@ -111,3 +111,7 @@ app.use((err, req, res, next) => {
 app.listen(port, () => console.log(
     `Express started on http://localhost:${port}; ` +
     `press Ctrl-C to terminate.`));
+
+
+
+    const motos = require('./Logann/Moto');
