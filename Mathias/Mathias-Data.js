@@ -1,4 +1,5 @@
-// Dummy Data
+// Data
+
 const cars = [
     { id: 1, name: "Tesla Model S", description: "Electric luxury sedan", price: 79999 },
     { id: 2, name: "Ford Mustang", description: "Classic American muscle car", price: 55999 },
@@ -11,3 +12,5 @@ const cars = [
     { id: 9, name: "Ferrari F8 Tributo", description: "V8-powered supercar", price: 280000 },
     { id: 10, name: "Nissan GT-R", description: "Japanese high-performance car", price: 113000 },
 ];
+
+module.exports =  cars;
