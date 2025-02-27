@@ -4,8 +4,9 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const data = require('./Edouard/products');
+const cars = require("./Mathias/cars");
+const motos = require("./Logann/Moto");
 
-app.set("view engine", "handlebars");
 
 // Endpoint to get all cats Reinhard
 app.get('/AllCars', (req, res) => {
@@ -18,9 +19,6 @@ app.get('/OneCar/:id', (req, res) => {
     if (!car) return res.status(404).json({ message: "Car not found" });
     res.json(car);
 });
-
-
-
 
 //haal alle motormerken op Logan
 
@@ -56,13 +54,13 @@ app.get('/OneProduct/:id', (req, res) => {
 
 
 
-// Endpoint to get all cars Mathias
-app.get('/AllCars', (req, res) => {
+// Endpoint om alle auto's op te halen
+app.get("/api/cars", (req, res) => {
     res.json(cars);
 });
 
-// Endpoint to get car by ID Mathias
-app.get('/OneCar/:id', (req, res) => {
+// Endpoint om een specifieke auto op te halen via ID
+app.get("/api/cars/:id", (req, res) => {
     const car = cars.find(c => c.id === parseInt(req.params.id));
     if (!car) return res.status(404).json({ message: "Car not found" });
     res.json(car);
