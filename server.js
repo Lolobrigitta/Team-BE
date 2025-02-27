@@ -3,6 +3,7 @@ const port = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
+const data = require('./Edouard/products');
 
 app.set("view engine", "handlebars");
 
