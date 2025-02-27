@@ -4,8 +4,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const data = require('./Edouard/products');
-const cars = require("./Mathias/cars");
-const motos = require("./Logann/Moto");
+const cars = require('./Mathias/Mathias-Data');
+const motos = require('./Logann/Moto');
 
 
 // Endpoint to get all cats Reinhard
