@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 
+const fruit = require('./Jelle/Fruit');
 app.set("view engine", "handlebars");
 
 // Endpoint to get all cats Reinhard

@@ -6,3 +6,4 @@ const fruits = [
     { id: 5, name: 'Grapes', color: 'Green or Purple', family: 'Vitaceae', origin: 'Near East' },
     { id: 6, name: 'Pineapple', color: 'Yellow', family: 'Bromeliaceae', origin: 'South America' }
 ];
+module.exports = fruits;
