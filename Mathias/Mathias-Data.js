@@ -1,4 +1,3 @@
-// Dummy Data
 const cars = [
     { id: 1, name: "Tesla Model S", description: "Electric luxury sedan", price: 79999 },
     { id: 2, name: "Ford Mustang", description: "Classic American muscle car", price: 55999 },
