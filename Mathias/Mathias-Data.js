@@ -11,3 +11,5 @@ const cars = [
     { id: 9, name: "Ferrari F8 Tributo", description: "V8-powered supercar", price: 280000 },
     { id: 10, name: "Nissan GT-R", description: "Japanese high-performance car", price: 113000 },
 ];
+
+module.exports =  cars;
