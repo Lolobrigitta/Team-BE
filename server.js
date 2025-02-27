@@ -3,19 +3,20 @@ const port = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
+const cats = require('./Reinhard/Reinhard-Data.js');
 
 app.set("view engine", "handlebars");
 
 // Endpoint to get all cats Reinhard
-app.get('/AllCars', (req, res) => {
-    res.json(cars);
+app.get('/AllCats', (req, res) => {
+    res.json(cats);
 });
 
 // Endpoint to get cat by ID Reinhard
-app.get('/OneCar/:id', (req, res) => {
+app.get('/OneCat/:id', (req, res) => {
     const car = cars.find(c => c.id === parseInt(req.params.id));
-    if (!car) return res.status(404).json({ message: "Car not found" });
-    res.json(car);
+    if (!car) return res.status(404).json({ message: "Cat not found" });
+    res.json(cat);
 });
 
 
