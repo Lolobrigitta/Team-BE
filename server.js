@@ -44,12 +44,12 @@ app.get('/api/moto/:id', (req, res) => {
 
 
 // Endpoint om alle producten op te halen Edouard
-app.get('/AllProducts', (req, res) => {
+app.get('/Products', (req, res) => {
     res.json(products);
 });
 
 // Endpoint om één product op te halen op basis van ID Edouard
-app.get('/OneProduct/:id', (req, res) => {
+app.get('/Products/:id', (req, res) => {
     const product = products.find(p => p.id === parseInt(req.params.id));
     if (!product) return res.status(404).json({ message: "Product not found" });
     res.json(product);
