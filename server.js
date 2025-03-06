@@ -7,7 +7,9 @@ const products = require('./Edouard/products');
 const cars = require("./Mathias/Mathias-Data");
 const motos = require("./Logann/Moto");
 const cats = require('./Reinhard/cats');
-
+const fruit = require('./Jelle/Fruit')
+const cors = require("cors");
+app.use(cors());
 
 // Endpoint to get all cats Reinhard
 app.get('/AllCats',(req, res) => {
