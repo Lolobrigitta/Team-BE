@@ -3,25 +3,23 @@ const port = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
-const products = require('./Edouard/products');
-const cars = require("./Mathias/Mathias-Data");
-const motos = require("./Logann/Moto");
-const cats = require('./Reinhard/cats');
-const fruit = require('./Jelle/Fruit')
-const cors = require("cors");
-app.use(cors());
+
+app.set("view engine", "handlebars");
 
 // Endpoint to get all cats Reinhard
-app.get('/AllCats',(req, res) => {
-    res.json(cats);
+app.get('/AllCars', (req, res) => {
+    res.json(cars);
 });
 
 // Endpoint to get cat by ID Reinhard
-app.get('/OneCat/:id', (req, res) => {
+app.get('/OneCar/:id', (req, res) => {
     const car = cars.find(c => c.id === parseInt(req.params.id));
-    if (!cat) return res.status(404).json({ message: "Cat not found" });
-    res.json(cat);
+    if (!car) return res.status(404).json({ message: "Car not found" });
+    res.json(car);
 });
+
+
+
 
 //haal alle motormerken op Logan
 
@@ -30,25 +28,26 @@ app.get('/api/merken', (req, res) => {
     res.json(merken);
 });
 
-// Haal alle motoren op van een specifiek merk
-app.get('/api/motos/brand/:brand', (req, res) => {
-    const brand = req.params.brand;
-    const filteredMotos = motos.filter(moto => moto.brand.toLowerCase() === brand.toLowerCase());
-    res.json(filteredMotos);
-});
-
+// Haal een specifieke motor op via ID LOgan
+app.get('/api/moto/:id', (req, res) => {
+    const moto = motos.find(m => m.id === parseInt(req.params.id));
+    if (!moto) {
+        return res.status(404).json({ error: "Motor niet gevonden" });
+    }
+    res.json(moto);
+})
 
 
 
 
 
 // Endpoint om alle producten op te halen Edouard
-app.get('/Products', (req, res) => {
+app.get('/AllProducts', (req, res) => {
     res.json(products);
 });
 
 // Endpoint om één product op te halen op basis van ID Edouard
-app.get('/Products/:id', (req, res) => {
+app.get('/OneProduct/:id', (req, res) => {
     const product = products.find(p => p.id === parseInt(req.params.id));
     if (!product) return res.status(404).json({ message: "Product not found" });
     res.json(product);
@@ -56,13 +55,13 @@ app.get('/Products/:id', (req, res) => {
 
 
 
-// Endpoint om alle auto's op te halen
-app.get("/api/cars", (req, res) => {
+// Endpoint to get all cars Mathias
+app.get('/AllCars', (req, res) => {
     res.json(cars);
 });
 
-// Endpoint om een specifieke auto op te halen via ID
-app.get("/api/cars/:id", (req, res) => {
+// Endpoint to get car by ID Mathias
+app.get('/OneCar/:id', (req, res) => {
     const car = cars.find(c => c.id === parseInt(req.params.id));
     if (!car) return res.status(404).json({ message: "Car not found" });
     res.json(car);
@@ -96,8 +95,17 @@ app.get('/Onemeubels/:id', (req, res) => {
     res.json(meubel);
 });
 
+// Custom 404 page
+app.use((req, res) => {
+    res.render("errors/404");
+});
+
+// Custom 500 page
+app.use((err, req, res, next) => {
+    console.error(err.message);
+    res.render("errors/500");
+});
+
 app.listen(port, () => console.log(
     `Express started on http://localhost:${port}; ` +
     `press Ctrl-C to terminate.`));
-
-
