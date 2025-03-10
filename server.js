@@ -30,14 +30,13 @@ app.get('/api/merken', (req, res) => {
     res.json(merken);
 });
 
-// Haal een specifieke motor op via ID LOgan
-app.get('/api/moto/:id', (req, res) => {
-    const moto = motos.find(m => m.id === parseInt(req.params.id));
-    if (!moto) {
-        return res.status(404).json({ error: "Motor niet gevonden" });
-    }
-    res.json(moto);
-})
+// Haal alle motoren op van een specifiek merk
+app.get('/api/motos/brand/:brand', (req, res) => {
+    const brand = req.params.brand;
+    const filteredMotos = motos.filter(moto => moto.brand.toLowerCase() === brand.toLowerCase());
+    res.json(filteredMotos);
+});
+
 
 
 
@@ -100,3 +99,5 @@ app.get('/Onemeubels/:id', (req, res) => {
 app.listen(port, () => console.log(
     `Express started on http://localhost:${port}; ` +
     `press Ctrl-C to terminate.`));
+
+
